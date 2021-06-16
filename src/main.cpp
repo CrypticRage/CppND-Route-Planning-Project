@@ -60,8 +60,8 @@ int main(int argc, const char **argv)
     float end_x;
     float end_y;
 
-    std::cout << "Please enter the starting and ending coordinates (startX, startY, endX, endY) as floating point values " <<
-                 "(one per line): " << std::endl;
+    std::cout << "Please enter the starting and ending coordinates (startX startY endX endY) as floating point values: " << std::endl;
+    std::cin >> start_x >> start_y >> end_x >> end_y;
     // std::cin >> start_x;
     // std::cin >> start_y;
     // std::cin >> end_x;
@@ -72,7 +72,7 @@ int main(int argc, const char **argv)
 
     // Create RoutePlanner object and perform A* search.
     // RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
     route_planner.AStarSearch();
 
     std::cout << "Distance: " << route_planner.GetDistance() << " meters. \n";
