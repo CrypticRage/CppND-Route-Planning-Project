@@ -55,11 +55,23 @@ int main(int argc, const char **argv)
     // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below in place of 10, 10, 90, 90.
+    float start_x;
+    float start_y;
+    float end_x;
+    float end_y;
+
+    std::cout << "Please enter the starting and ending coordinates (startX, startY, endX, endY) as floating point values " <<
+                 "(one per line): " << std::endl;
+    // std::cin >> start_x;
+    // std::cin >> start_y;
+    // std::cin >> end_x;
+    // std::cin >> end_y;
 
     // Build Model.
     RouteModel model{osm_data};
 
     // Create RoutePlanner object and perform A* search.
+    // RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
     RoutePlanner route_planner{model, 10, 10, 90, 90};
     route_planner.AStarSearch();
 
@@ -68,7 +80,7 @@ int main(int argc, const char **argv)
     // Render results of search.
     Render render{model};
 
-    auto display = io2d::output_surface{400, 400, io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
+    auto display = io2d::output_surface{1000, 800, io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
     display.size_change_callback([](io2d::output_surface& surface){
         surface.dimensions(surface.display_dimensions());
     });
